@@ -1,4 +1,8 @@
+const moment = require('moment');
+moment.locale("zh-cn");
+
 module.exports = {
+   base:'/docs/',
   title: "尽头的另一个我",
   description:"尽头的另一个我的博客",
   head:[
@@ -6,8 +10,20 @@ module.exports = {
     ['meta',{name:'author',content:'尽头的另一个我'}],
     ['meta',{name:'keywords',content:'vuepress 介绍,vuepress 说明,尽头的另一个我'}],
   ],
+  plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp) => {
+          // 不要忘了安装 moment
+          return moment(timestamp).format("LLLL")
+        }
+      }
+    ]
+  ],
   themeConfig: {
-    // navbar: false,
+   
+    lastUpdated: '更新时间', // string | boolean
     logo: '/assets/img/logo.jpg',
     nav: [
       { text: 'Home', link: '/' },
@@ -19,29 +35,12 @@ module.exports = {
         items: [
           { text: 'Group1', items: [{ text: 'Home', link: '/' },
           { text: 'About', link: '/about/' }] },
-          { text: 'Group2', items: [/*  */] }
+          // { text: 'Group2', items: [/*  */] }
         ]
       },
+     
       { text: 'External', link: 'https://google.com' },
     ],
-    // sidebar: 'auto'
-    // sidebar:[
-    //   // '',
-    //   // 'about',
-    //   // 'test',
-    //   // {
-    //   //   title: '你好 vuepress',   // 必要的
-    //   //   path: '/css/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-    //   //   collapsable: false, // 可选的, 默认值是 true,
-    //   //   sidebarDepth: 1,    // 可选的, 默认值是 1
-    //   //   children: [
-    //   //     '/css/a',
-    //   //     '/css/b',
-    //   //     '/css/c'
-    //   //   ]
-    //   // },
-    // ]
-
     sidebar :{
       '/css/':[
         '',
