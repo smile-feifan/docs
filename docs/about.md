@@ -14,5 +14,5 @@ navbar: false
 # Vssue Demo
 <!-- 不添加title 免得给自己找麻烦 -->
 <!-- <Vssue/> -->
-
+自动化部署 travis-ci
 
